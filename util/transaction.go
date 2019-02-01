@@ -3,15 +3,14 @@ package util
 import (
 	"crypto/ecdsa"
 	"crypto/sha256"
+	"log"
+
 	"github.com/golang/protobuf/proto"
 	"github.com/stanche/go-client-api/common/crypto"
 	"github.com/stanche/go-client-api/core"
-	"log"
-	"time"
 )
 
 func SignTransaction(transaction *core.Transaction, key *ecdsa.PrivateKey) {
-	transaction.GetRawData().Timestamp = time.Now().UnixNano() / 1000000
 
 	rawData, err := proto.Marshal(transaction.GetRawData())
 
