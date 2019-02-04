@@ -2,8 +2,8 @@ package base58
 
 import (
 	"crypto/sha256"
+
 	"github.com/shengdoushi/base58"
-	"log"
 )
 
 var tronAlphabet = base58.NewAlphabet("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz")
@@ -35,7 +35,7 @@ func DecodeCheck(input string) []byte {
 	decodeCheck, err := Decode(input)
 
 	if err != nil {
-		log.Fatalln(err.Error())
+		return nil
 	}
 
 	if len(decodeCheck) < 4 {
